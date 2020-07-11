@@ -5,6 +5,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Shop from "./pages/shop/shop.component";
 import Header from "./pages/header/header.component";
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
+import CheckoutPage from "./pages/checkout/checkout.component";
 import {
   auth,
   createUserProfileObject,
@@ -13,6 +14,7 @@ import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -44,7 +46,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route exact path="/shop" component={Shop}></Route>
-
+          <Route exact path="/checkout" component={CheckoutPage}></Route>
           <Route
             exact
             path="/signin"
