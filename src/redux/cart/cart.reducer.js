@@ -1,14 +1,15 @@
-import { USER_TYPES } from "./user.types";
+import { CART_TYPES } from "./cart.types";
+
 const INITIAL_STATE = {
-  currentUser: null,
+  hidden: true,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case USER_TYPES.SET_CURRENT_USER:
+    case CART_TYPES.TOGGLE_CART_HIDDEN:
       return {
         ...state,
-        currentUser: action.payload,
+        hidden: !state.hidden,
       };
     default:
       return state;
