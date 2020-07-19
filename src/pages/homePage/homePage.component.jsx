@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 
 import Directory from "../../components/directory/directory.component";
-import "./homePage.scss";
+import { HomePageContainer } from "./home-page.styles";
 
 class HomePage extends Component {
   render() {
     return (
-      <div className="homepage">
-        <h1>Welcome to my Homepage</h1>
+      <HomePageContainer>
         <Directory></Directory>
-      </div>
+      </HomePageContainer>
     );
   }
 }
