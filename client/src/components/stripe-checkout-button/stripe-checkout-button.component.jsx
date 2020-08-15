@@ -1,13 +1,28 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
 
 function StripeCheckoutButton({ price }) {
   const priceInCents = price * 100;
   const publishableKey =
     "pk_test_51H6FanEqMMUqwfrN2RgbaUyYELSrXwFw1sFSbYERRh8bJ2OtURyO9LEZANpPTzjrLjrgjxzU2zRkzq6r18MvigTt0085Sacrmn";
+
   const onToken = (token) => {
-    console.log(token);
-    alert("Payment done");
+    axios({
+      url: "payment",
+      method: "post",
+      data: {
+        amount: priceInCents,
+        token,
+      },
+    })
+      .then((res) => {
+        alert("Payment successful");
+      })
+      .catch((error) => {
+        console.error("Error during stripe payment", JSON.parse(error));
+        alert("Payment not made. Something is terribly wrong.");
+      });
   };
 
   return (
